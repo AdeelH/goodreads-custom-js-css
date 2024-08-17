@@ -31,27 +31,34 @@ function selectAll(query, elem = document) {
     return Array.from(elem.querySelectorAll(query));
 }
 
-function merge_want_to_reads() {
+function get_posts() {
     let post_elements = selectAll(".gr-newsfeedItem");
-    let post_users = selectAll(".gr-newsfeedItem__header>a.gr-user__profileLink")
-        .map(e => e.textContent);
-    let post_types = selectAll(".gr-newsfeedItem__header>span")
-        .map(e => e.textContent);
-    let unique_users = new Set(post_users);
+    let posts = post_elements
+    		.map((post_elem, idx) => {
+    			header = selectAll(".gr-newsfeedItem__header", post_elem)[0];
+    			user = selectAll("a.gr-user__profileLink", header)[0].textContent;
+    			type = selectAll("span", header)[0].textContent;
+    			book_imgs = selectAll('img.gr-book__image--large', post_elem)
+	                .map(e => e.closest('a'));
+    			return {
+	            "idx": idx,
+	            "user": user,
+	            "type": type,
+	            "post_elem": post_elem,
+	            "book_imgs": book_imgs
+		    		}
+    			
+    		});
+    return posts;
+}
 
+function merge_want_to_reads() {
+    let posts = get_posts();
+    let unique_users = new Set(posts.map(post => post.user));
     let user_to_posts = {};
     unique_users.forEach(
         user => {
-            user_to_posts[user] = post_users
-                .map((post_user, idx) => (post_user == user) ? idx : -1)
-                .filter(idx => idx >= 0)
-                .map(idx => ({
-                    "idx": idx,
-                    "type": post_types[idx],
-                    "post_elem": post_elements[idx],
-                    "book_imgs": selectAll('img.gr-book__image--large', post_elements[idx])
-                        .map(e => e.closest('a'))
-                }));
+            user_to_posts[user] = posts.filter(post => post.user == user);
         });
 
     let user_to_toread_posts = {};
@@ -91,4 +98,3 @@ function merge_want_to_reads() {
                     });
             });
 }
-
