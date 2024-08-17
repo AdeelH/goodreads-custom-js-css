@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     selectAll('img.gr-book__image--large').forEach(e => e.title = e.alt);
 
     merge_want_to_reads();
@@ -10,7 +10,7 @@ $(document).ready(function() {
     var config = { childList: true };
 
     // Callback function to execute when mutations are observed
-    var callback = function(mutationsList) {
+    var callback = function (mutationsList) {
         for (var mutation of mutationsList) {
             if (mutation.type == 'childList') {
                 selectAll('img.gr-book__image--large').forEach(e => e.title = e.alt);
@@ -34,21 +34,21 @@ function selectAll(query, elem = document) {
 function get_posts() {
     let post_elements = selectAll(".gr-newsfeedItem");
     let posts = post_elements
-    		.map((post_elem, idx) => {
-    			header = selectAll(".gr-newsfeedItem__header", post_elem)[0];
-    			user = selectAll("a.gr-user__profileLink", header)[0].textContent;
-    			type = selectAll("span", header)[0].textContent;
-    			book_imgs = selectAll('img.gr-book__image--large', post_elem)
-	                .map(e => e.closest('a'));
-    			return {
-	            "idx": idx,
-	            "user": user,
-	            "type": type,
-	            "post_elem": post_elem,
-	            "book_imgs": book_imgs
-		    		}
-    			
-    		});
+        .map((post_elem, idx) => {
+            header = selectAll(".gr-newsfeedItem__header", post_elem)[0];
+            user = selectAll("a.gr-user__profileLink", header)[0].textContent;
+            type = selectAll("span", header)[0].textContent;
+            book_imgs = selectAll('img.gr-book__image--large', post_elem)
+                .map(e => e.closest('a'));
+            return {
+                "idx": idx,
+                "user": user,
+                "type": type,
+                "post_elem": post_elem,
+                "book_imgs": book_imgs
+            }
+
+        });
     return posts;
 }
 
