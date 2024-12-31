@@ -1,4 +1,5 @@
-$(document).ready(function () {
+// Note: enable "Run at the start" for this rule in the extension
+document.addEventListener('DOMContentLoaded', function () {
     // Exit if not on home page
     const url = window.location.href;
     const home_page_regex = /^https:\/\/www\.goodreads\.com\/(?:home\/?)(?:\?|#|$)/;
