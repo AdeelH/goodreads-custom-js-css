@@ -1,6 +1,6 @@
 The main goal of this custom JS and CSS is to increase the content-density of the Goodreads homepage and reduce excessive whitespace.
 
-![Goodreads customizations screenshot](https://github.com/AdeelH/goodreads-custom-js-css/assets/13014700/8f9a080b-9328-4ce8-851f-fb0774833327)
+![Goodreads customizations screenshot](img/demo.png)
 
 # What this does
 
@@ -15,4 +15,4 @@ The main goal of this custom JS and CSS is to increase the content-density of th
 
 1. Install the [`User JavaScript and CSS` Chrome extension](https://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld) (or equivalent).
 2. Save the custom JS and CSS code as a new rule using the extension. Make sure to enable "Run at the start" as shown in the screenshot below.
-   <img width="960" alt="image" src="img/Screenshot 2024-12-31 140746.png">
+   <img width="960" alt="image" src="img/extension.png">
