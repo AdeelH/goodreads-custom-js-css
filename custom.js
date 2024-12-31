@@ -1,4 +1,12 @@
 $(document).ready(function () {
+    // Exit if not on home page
+    const url = window.location.href;
+    const home_page_regex = /^https:\/\/www\.goodreads\.com\/(?:home\/?)(?:\?|#|$)/;
+    if (!home_page_regex.test(url)) {
+        console.log('Not on Goodreads home page. Exiting script.');
+        return;
+    }
+
     selectAll('img.gr-book__image--large').forEach(e => e.title = e.alt);
 
     merge_want_to_reads();
