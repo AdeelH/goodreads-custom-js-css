@@ -12,6 +12,5 @@ The main goal is to increase the content-density of the homepage and reduce exce
 # Usage
 
 1. Install the [`User JavaScript and CSS` Chrome extension](https://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld) (or equivalent).
-2. Save the custom JS and CSS code as a new rule using the extension. Make sure to enable JQuery injection.
+2. Save the custom JS and CSS code as a new rule using the extension.
    <img width="960" alt="image" src="https://github.com/AdeelH/goodreads-custom-js-css/assets/13014700/181854f9-5539-4a9d-b824-02b3dde5634a">
-
